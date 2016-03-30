@@ -6,6 +6,9 @@
 <%= link_to 'Destroy', item_path(item),
               method: :delete,
               data: { confirm: 'Weet je dat echt heel zeker?' } %>
+
+<%= link_to 'Aanpassen', edit_item_path(item) %>
+
 <br />
 <%= item.description %><br />
 <a href="http://nos.nl/"><%= item.url %></a><br />
