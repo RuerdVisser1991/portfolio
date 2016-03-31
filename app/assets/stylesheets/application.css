@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+	width: 900px;
+	margin: 0 auto;
+}
+h1 {
+	color: #009ef3;
+}
+article {
+	margin-bottom: 20px;
+	padding: 25px;
+}
+
+article:nth-child(even) {background: #fafafa;}
+article:nth-child(odd) {background: #FFF;}
+
+article h1 {
+	margin: 0;
+	padding: 0;
+	float: left;
+	margin-right: 50px;
+}
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }

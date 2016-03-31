@@ -1,14 +1,21 @@
 <h1>Vet, zie hieronder alle items</h1>
-<p>Find me in app/views/items/index.html.erb</p>
 
-<% @items.each do |item| %>
-<b><%= item.title %></b>
-<%= link_to 'Destroy', item_path(item),
-              method: :delete,
-              data: { confirm: 'Weet je dat echt heel zeker?' } %>
-<br />
-<%= item.description %><br />
-<a href="http://nos.nl/"><%= item.url %></a><br />
-<hr>
-
-<% end %>
+<%= link_to 'Nieuwe aanmaken', new_item_path %><br /><br /><br />
+<section>
+	<% @items.each do |item| %>
+		<a href="<%= item.url %>">
+			<article>
+				<header>
+					<h1><%= item.title %></h1><%= link_to 'Destroy', item_path(item),
+				       								method: :delete,
+				              				data: { confirm: 'Weet je dat echt heel zeker?' } %>
+					<div class="clearfix"></div>
+					<br />
+				</header>
+				<content>
+					<%= item.description %><br />
+				</content>
+			</article>
+		</a>
+	<% end %>
+</section>
