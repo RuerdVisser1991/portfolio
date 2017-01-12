@@ -1,6 +1,13 @@
 class ItemsController < ApplicationController
+
+  before_filter :authorize, :except => [:index, :show] #blokkeert alles behalve index en show voor niet ingelogde users (zie applicatoin-controller)
+
   def index
-  	@items = Item.all()
+    if params[:search]
+      @items = Item.search(params[:search]).order("created_at DESC")
+    else
+      @items = Item.all.order('created_at DESC')
+    end
   end
 
   def new
@@ -9,6 +16,10 @@ class ItemsController < ApplicationController
 
   def show
   end
+
+	def edit
+		item = Item.find(params[:id])
+	end
 
   def destroy
 	@item = Item.find(params[:id])
@@ -26,6 +37,6 @@ class ItemsController < ApplicationController
 
   private
   	def item_params
-  		params.require(:item).permit(:title, :description, :url)
+  		params.require(:item).permit(:title, :description, :url, :portfolio_image, :category_ids => []) #[] is voor array!
   	end
 end

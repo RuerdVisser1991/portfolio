@@ -1,7 +1,7 @@
 <h1>Items#new</h1>
 <p>Find me in app/views/items/new.html.erb</p>
 
-<%= form_for @item, url: {action:"create"} do |f| %>
+<%= form_for @item, url: {action:"create"}, multipart: true do |f| %>
 	<%= label_tag(:title, "Titel:") %><br />
 	<%= f.text_field :title %>
 	<br /><br />
@@ -12,6 +12,13 @@
 
 	<%= label_tag(:url, "URL:") %><br />
 	<%= f.text_field :url %>
+	<br /><br />
+
+	<%= label_tag(:portfolio_image, "Afbeelding:") %><br />
+	<%= f.file_field :portfolio_image %>
+	<br /><br />
+	<%= label_tag(:category_ids, "Categorie") %><br />
+	<%= f.collection_check_boxes :category_ids, Category.all, :id, :title, :class => 'hoi'%>
 	<br /><br />
 	<%= f.submit "Aanmaken" %>
 

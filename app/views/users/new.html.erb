@@ -1,0 +1,29 @@
+<h1>Nieuwe gebruiker aanmaken</h1>
+
+<%= form_for(@user) do |f| %>
+	<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this todo item from being saved:</h2>
+​
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<%= label_tag(:name, "Naam:") %><br />
+	<%= f.text_field :name %><br />
+	<br /><br />
+	<%= label_tag(:email, "E-mail:") %><br />
+	<%= f.text_field :email %><br />
+	<br /><br />
+	<%= label_tag(:password, "Wachtwoord:") %><br />
+	<%= f.password_field :password %><br />
+	<br /><br />
+	<%= label_tag(:password_confirmation, "Herhaal wachtwoord:") %><br />
+	<%= f.password_field :password_confirmation %><br />
+	<br /><br />
+	<%= f.submit "Registreren" %>
+<% end %>

@@ -1,21 +1,24 @@
 Rails.application.routes.draw do
-  get 'items/index'
-
+  
   get 'items/new'
-
   get 'items/show'
-
   get 'items' => 'items#index'
 
-  post 'items' => 'items#create'
+  get 'registreren' => 'users#new'
+  get 'login' => 'sessions#new'
+  get 'logout' => 'sessions#destroy'
 
+
+  post 'items' => 'items#create'
+  post 'login' => 'sessions#create'
+  post 'users' => 'users#create'
   resources 'items'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'items#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,2 @@
+Warning: You're using Rubygems 2.0.14.1 with Spring. Upgrade to at least Rubygems 2.1.0 and run `gem pristine --all` for better startup performance.
+Running via Spring preloader in process 6219

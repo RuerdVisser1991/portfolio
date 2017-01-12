@@ -1,6 +1,15 @@
 <h1>Vet, zie hieronder alle items</h1>
+<% if current_user %>
+	<%= link_to 'Nieuwe aanmaken', new_item_path %><br /><br /><br />
+<% end %>
 
-<%= link_to 'Nieuwe aanmaken', new_item_path %><br /><br /><br />
+<%= form_tag items_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search], :class => "hoi" %>
+    <%= submit_tag "Zoeken", :name => nil %>
+  </p>
+<% end %>
+
 <section>
 	<% @items.each do |item| %>
 		<a href="<%= item.url %>">
@@ -8,12 +17,16 @@
 				<header>
 					<h1><%= item.title %></h1><%= link_to 'Destroy', item_path(item),
 				       								method: :delete,
-				              				data: { confirm: 'Weet je dat echt heel zeker?' } %>
+				              				data: { confirm: 'Weet je dat echt heel zeker?' } %> <%= link_to 'Aanpassen', edit_item_path(item) %>
 					<div class="clearfix"></div>
 					<br />
 				</header>
 				<content>
 					<%= item.description %><br />
+					<%= image_tag(item.portfolio_image_url(:thumb)) if item.portfolio_image? %>
+					<% item.categories.each do |category| %>
+						<%= category.title %>
+					<% end %>
 				</content>
 			</article>
 		</a>
